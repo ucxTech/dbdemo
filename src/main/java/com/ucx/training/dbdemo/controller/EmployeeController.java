@@ -34,6 +34,12 @@ public class EmployeeController {
         return ResponseEntity.ok().body(newEmp);
     }
 
+    /**
+     * This method updates Employee with the data passed in RequestBody
+     *
+     * @param employee
+     * @return
+     */
     @PutMapping
     public ResponseEntity<Employee> update(@RequestBody Employee employee){
         Employee updatedEmp = employeeService.update(employee);

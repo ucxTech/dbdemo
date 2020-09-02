@@ -15,7 +15,7 @@ public class EventController {
         this.eventService = eventService;
     }
 
-    @PostMapping("/{id}/events")
+    @PostMapping("{id}/events")
     public ResponseEntity<Event> add(@PathVariable("id") Integer employeeId,
                                        @RequestBody Event event){
         Event savedEvent = eventService.save(event, employeeId);

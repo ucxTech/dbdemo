@@ -18,28 +18,26 @@ public class EmployeeService {
         this.employeeRepository = employeeRepository;
     }
 
-    public Employee save(Employee employee){
+    public Employee save(Employee employee) {
         return employeeRepository.save(employee);
     }
 
-    public Employee update(Employee emp){
-//        Optional<Employee> optionalEmployee = employeeRepository.findById(emp.getId());
-//        optionalEmployee.get();
+    public Employee update(Employee emp) {
         Employee foundEmployee = findById(emp.getId());
         foundEmployee.setName(emp.getName());
         return employeeRepository.save(foundEmployee);
     }
 
-    public Employee findById(Integer id){
+    public Employee findById(Integer id) {
         return employeeRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
     }
 
-    public List<Employee> findByName(String name){
+    public List<Employee> findByName(String name) {
         return employeeRepository.findByNameIgnoreCase(name);
     }
 
-    public List<Map<String, Object>> findEmployeeEvents(Integer id){
-      List<Tuple> resultSet = employeeRepository.findEmployeeEvents(id);
-      return  TupleHelper.toList(resultSet);
+    public List<Map<String, Object>> findEmployeeEvents(Integer id) {
+        List<Tuple> resultSet = employeeRepository.findEmployeeEvents(id);
+        return TupleHelper.toList(resultSet);
     }
 }

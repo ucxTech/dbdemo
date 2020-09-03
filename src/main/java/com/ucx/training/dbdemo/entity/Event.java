@@ -19,10 +19,7 @@ import java.time.LocalDateTime;
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
-public class Event {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class Event extends BaseEntity<Integer> {
 
     private String description;
 
@@ -32,7 +29,7 @@ public class Event {
     private LocalDateTime startDate;
     private LocalDateTime endDate;
 
-    @ManyToOne
-    @JoinColumn(name="employee_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    //@JoinColumn(name="employee_id")
     private Employee employee;
 }

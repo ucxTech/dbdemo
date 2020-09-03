@@ -29,7 +29,7 @@ public class EmployeeService {
     }
 
     public Employee findById(Integer id) {
-        return employeeRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
+        return employeeRepository.findById(id).orElseThrow(() -> new RuntimeException("Employee not found"));
     }
 
     public List<Employee> findByName(String name) {
